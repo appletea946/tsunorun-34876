@@ -1,0 +1,39 @@
+<%= render "shared/header" %>
+<h2>this is groups#new</h2>
+<%= form_with model: @group, local: true do |f| %>
+
+  <div class="field">
+    <%= f.label :title, "タイトル" %><br />
+    <%= f.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= f.label :details, "詳細" %><br />
+    <%= f.text_area :details %>
+  </div>
+
+  <div class="field">
+    <%= f.label :start_date, "開始日時" %><br />
+    <%= f.datetime_field :start_date %>
+  </div>
+
+  <div class="field">
+    <%= f.label :end_date, "終了日時" %><br />
+    <%= f.datetime_field :end_date %>
+  </div>
+
+  <div class="field">
+    <%= f.label :deadline_date, "参加期限" %><br />
+    <%= f.datetime_field :deadline_date %>
+  </div>
+
+  <div class="field">
+    <%= f.label :max_num_of_people, "上限人数" %><br />
+    <%= f.number_field :max_num_of_people %>
+  </div>
+
+  <%= f.submit "作成" %>
+
+<% end %>
+<%= link_to "戻る", groups_path %>
+<%= render "shared/footer" %>
