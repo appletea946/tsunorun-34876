@@ -1,0 +1,7 @@
+<%= render "shared/header" %>
+<h2>this is users#show</h2>
+名前：<%= @user.nickname %><br>
+<%= link_to "編集する", edit_user_path(@user.id) %>
+<%= link_to "ユーザー一覧", users_path %>
+<%= link_to "トップへ", root_path %>
+<%= render "shared/footer" %>
