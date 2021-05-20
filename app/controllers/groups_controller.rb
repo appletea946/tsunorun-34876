@@ -9,11 +9,10 @@ class GroupsController < ApplicationController
   end
 
   def create
-    binding.pry
     @group = Group.new(group_params)
     if @group.valid?
       @group.save
-      render :index
+      render :show
     else
       render :new
     end
@@ -32,6 +31,7 @@ class GroupsController < ApplicationController
 
   def destroy
     @group.destroy
+    redirect_to root_path
   end
 
   private
