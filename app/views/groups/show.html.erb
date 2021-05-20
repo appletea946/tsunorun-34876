@@ -1,3 +1,13 @@
 <%= render "shared/header" %>
 <h2>this is groups#show</h2>
+<div style="border: 1px solid black;">
+タイトル：<%= @group.title %><br>
+開始時刻：<%= @group.start_date %><br>
+終了時刻：<%= @group.end_date %><br>
+参加締め切り：<%= @group.deadline_date %><br>
+参加上限人数：<%= @group.max_num_of_people %>人<br>
+詳細：<%= @group.details %><br>
+</div>
+<%= link_to "グループ編集", edit_group_path(@group.id) %>
+<%= link_to "トップへ", root_path %>
 <%= render "shared/footer" %>
