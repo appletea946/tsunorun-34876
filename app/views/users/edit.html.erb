@@ -1,0 +1,15 @@
+<h2>編集</h2>
+
+<h2>this is users#edit</h2>
+
+<%= form_with model: @user, local: true do |f| %>
+
+  <div class="field">
+    <%= f.label :nickname, "ニックネーム" %><br />
+    <%= f.text_field :nickname, autofocus: true %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "保存" %>
+  </div>
+<% end %>
