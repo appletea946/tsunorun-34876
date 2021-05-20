@@ -1,0 +1,10 @@
+<%= render "shared/header" %>
+
+<h2>this is users#index</h2>
+
+<% @users.each do |user| %>
+<%= link_to user.nickname, user_path(user.id) %>
+<% end %>
+<%= link_to "トップへ", root_path %>
+
+<%= render "shared/footer" %>
