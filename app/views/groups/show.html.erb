@@ -16,7 +16,7 @@
 </div>
 <% end %>
 <% @comments.each do |comment| %>
-<%= comment.content %><br>
+<%= comment.content %>:<%= link_to "削除", group_comment_path(@group.id, comment.id), method: :delete %><br>
 <% end %>
 <%= link_to "グループ編集", edit_group_path(@group.id) %>
 <%= link_to "トップへ", root_path %>
