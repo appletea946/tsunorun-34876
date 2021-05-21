@@ -1,0 +1,15 @@
+<%= render "shared/header" %>
+<h2>this is tags#new</h2>
+<%= form_with model: @tag, local: true do |f| %>
+
+  <div class="field">
+    <%= f.label :name, "名前" %><br />
+    <%= f.text_field :name %>
+  </div>
+
+  <%= f.submit "作成" %>
+
+<% end %>
+
+<%= link_to "戻る", tags_path %>
+<%= render "shared/footer" %>
