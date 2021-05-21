@@ -19,6 +19,8 @@ class GroupsController < ApplicationController
   end
 
   def show
+    @comments = @group.comments
+    @comment = Comment.new
   end
 
   def edit
