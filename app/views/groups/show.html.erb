@@ -9,6 +9,15 @@
 詳細：<%= @group.details %><br>
 <%= link_to "削除", group_path(@group.id), method: :delete %>
 </div>
+<%= form_with model: @comment, url: group_comments_path(@group.id), method: :post, local: true do |f| %>
+<div class="field">
+<%= f.text_area :content %>
+<%= f.submit "送信" %>
+</div>
+<% end %>
+<% @comments.each do |comment| %>
+<%= comment.content %><br>
+<% end %>
 <%= link_to "グループ編集", edit_group_path(@group.id) %>
 <%= link_to "トップへ", root_path %>
 <%= render "shared/footer" %>
