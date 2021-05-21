@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_21_062458) do
+ActiveRecord::Schema.define(version: 2021_05_21_082321) do
 
   create_table "groups", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "title", null: false
@@ -23,6 +23,15 @@ ActiveRecord::Schema.define(version: 2021_05_21_062458) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_groups_on_user_id"
+  end
+
+  create_table "tag_group_relations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "tag_id", null: false
+    t.bigint "group_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["group_id"], name: "index_tag_group_relations_on_group_id"
+    t.index ["tag_id"], name: "index_tag_group_relations_on_tag_id"
   end
 
   create_table "tags", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -45,4 +54,6 @@ ActiveRecord::Schema.define(version: 2021_05_21_062458) do
   end
 
   add_foreign_key "groups", "users"
+  add_foreign_key "tag_group_relations", "groups"
+  add_foreign_key "tag_group_relations", "tags"
 end
