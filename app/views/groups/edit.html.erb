@@ -32,6 +32,11 @@
     <%= f.number_field :max_num_of_people %>
   </div>
 
+  <div class="field">
+    <%= f.label :tag_ids, "タグ選択" %><br />
+    <%= f.collection_check_boxes :tag_ids, Tag.all, :id, :name %>
+  </div>
+
   <%= f.submit "編集" %>
 
 <% end %>

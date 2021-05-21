@@ -12,7 +12,6 @@ class GroupsController < ApplicationController
     @tag_group = TagGroup.new(tag_group_params)
     if @tag_group.valid?
       @tag_group.save
-      binding.pry
       redirect_to root_path
     else
       render :new
@@ -41,7 +40,12 @@ class GroupsController < ApplicationController
     params.require(:tag_group).permit(:title, :details, :start_date, :end_date, :deadline_date, :max_num_of_people, tag_ids: []).merge(user_id: current_user.id)
   end
 
+  def group_params
+    params.require(:group).permit(:title, :details, :start_date, :end_date, :deadline_date, :max_num_of_people).merge(user_id: current_user.id)
+  end
+
   def set_group
     @group = Group.find(params[:id])
   end
+
 end
