@@ -1,4 +1,7 @@
 class Group < ApplicationRecord
+  belongs_to :user
+  has_many :tag_group_relation, dependent: :destroy
+  has_many :tags, through: :tag_group_relation
 
 
   # with_options presence: true do
