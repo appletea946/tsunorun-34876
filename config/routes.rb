@@ -5,4 +5,5 @@ Rails.application.routes.draw do
   resources :groups
   resources :users, only: [:index, :edit, :update, :show]
   resources :tags, only: [:index, :new, :create, :destroy]
+  resources :comments, only: [:new, :create, :destroy]
 end
