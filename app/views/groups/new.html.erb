@@ -1,6 +1,6 @@
 <%= render "shared/header" %>
 <h2>this is groups#new</h2>
-<%= form_with model: @group, local: true do |f| %>
+<%= form_with model: @tag_group, url: groups_path, local: true do |f| %>
 
   <div class="field">
     <%= f.label :title, "タイトル" %><br />
@@ -30,6 +30,11 @@
   <div class="field">
     <%= f.label :max_num_of_people, "上限人数" %><br />
     <%= f.number_field :max_num_of_people %>
+  </div>
+
+  <div class="field">
+    <%= f.label :tag_ids, "タグ選択" %><br />
+    <%= f.collection_check_boxes :tag_ids, Tag.all, :id, :name %>
   </div>
 
   <%= f.submit "作成" %>

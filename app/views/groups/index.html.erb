@@ -1,6 +1,7 @@
 <%= render "shared/header" %>
 <h2>this is groups#index</h2>
 <%= link_to "グループ作成", new_group_path %>
+<%= link_to "タグ一覧", tags_path %>
 <% @groups.each do |item| %><br>
 <div style="border: 1px solid black;">
 タイトル：<%= link_to item.title, group_path(item.id) %><br>
