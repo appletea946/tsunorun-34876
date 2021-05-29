@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_21_120742) do
+ActiveRecord::Schema.define(version: 2021_05_29_061701) do
 
   create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.text "content", null: false
@@ -50,6 +50,15 @@ ActiveRecord::Schema.define(version: 2021_05_21_120742) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "user_group_relations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "group_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["group_id"], name: "index_user_group_relations_on_group_id"
+    t.index ["user_id"], name: "index_user_group_relations_on_user_id"
+  end
+
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -68,4 +77,6 @@ ActiveRecord::Schema.define(version: 2021_05_21_120742) do
   add_foreign_key "groups", "users"
   add_foreign_key "tag_group_relations", "groups"
   add_foreign_key "tag_group_relations", "tags"
+  add_foreign_key "user_group_relations", "groups"
+  add_foreign_key "user_group_relations", "users"
 end
