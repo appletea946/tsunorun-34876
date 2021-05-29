@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   root "groups#index"
   resources :groups do
     resources :comments, only: [:create, :destroy]
+    resources :user_group_relations, only: [:create, :destroy]
   end
   resources :tags, only: [:index, :new, :create, :destroy]
 end
