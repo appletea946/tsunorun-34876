@@ -3,6 +3,8 @@ class Group < ApplicationRecord
   has_many :tag_group_relation, dependent: :destroy
   has_many :tags, through: :tag_group_relation
   has_many :comments, dependent: :destroy
+  has_many :user_group_relations, dependent: :destroy
+  has_many :users, through: :user_group_relation
 
 
   # with_options presence: true do
