@@ -1,5 +1,6 @@
 class GroupsController < ApplicationController
   before_action :set_group, only: [:show, :edit, :update, :destroy]
+
   def index
     @groups = Group.all
   end
@@ -21,6 +22,7 @@ class GroupsController < ApplicationController
   def show
     @comments = @group.comments
     @comment = Comment.new
+    @user_group_relation = UserGroupRelation.find_by(user_id: current_user.id, group_id: params[:id])
   end
 
   def edit
