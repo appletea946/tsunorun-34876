@@ -1,4 +1,6 @@
 class UserGroupRelationsController < ApplicationController
+  before_action :move_to_login_page
+
   def create
     user_group_relations = UserGroupRelation.new(user_id: current_user.id, group_id: params[:group_id])
     if user_group_relations.valid?

@@ -1,4 +1,6 @@
 class TagsController < ApplicationController
+  before_action :move_to_login_page
+
   def index
     @tags = Tag.all
   end
