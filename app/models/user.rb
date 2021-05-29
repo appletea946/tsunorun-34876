@@ -5,8 +5,9 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
 
-  has_many :groups
   has_many :comments
+  has_many :user_group_relations
+  has_many :groups, through: :user_group_relation
 
   
   validates :nickname, presence: true

@@ -14,6 +14,7 @@ class TagGroup
 
   def save
     group = Group.create(title: title, details: details, start_date: start_date, end_date: end_date, deadline_date: deadline_date, max_num_of_people: max_num_of_people, user_id: user_id)
+    UserGroupRelation.create(user_id: user_id, group_id: group.id)
     tag_ids.each do |id|
       if id != ""
         TagGroupRelation.create(tag_id: id, group_id: group.id)
