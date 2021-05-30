@@ -1,5 +1,7 @@
 class GroupsController < ApplicationController
   before_action :set_group, only: [:show, :edit, :update, :destroy]
+  before_action :move_to_login_page
+  before_action :move_to_show, only: [:edit, :update, :destroy]
 
   def index
     @groups = Group.all
@@ -50,6 +52,12 @@ class GroupsController < ApplicationController
 
   def set_group
     @group = Group.find(params[:id])
+  end
+
+  def move_to_show
+    if @group.user != current_user
+      redirect_to group_path(@group.id)
+    end
   end
 
 end
