@@ -7,7 +7,7 @@ class User < ApplicationRecord
 
   has_many :comments
   has_many :user_group_relations
-  has_many :groups, through: :user_group_relation
+  has_many :groups, through: :user_group_relations
 
   
   validates :nickname, presence: true
