@@ -8,14 +8,16 @@
 参加上限人数：<%= @group.max_num_of_people %>人<br>
 詳細：<%= @group.details %><br>
 
-<% if @user_group_relation %>
-<%= link_to "辞退", group_user_group_relation_path(@group.id), method: :delete %><br>
+<% if @group.user != current_user %>
+  <% if @user_group_relation %>
+  <%= link_to "辞退", group_user_group_relation_path(@group.id), method: :delete %><br>
+  <% else %>
+  <%= link_to "参加", group_user_group_relations_path(@group.id), method: :post %><br>
+  <% end %>
 <% else %>
-<%= link_to "参加", group_user_group_relations_path(@group.id), method: :post %><br>
+<%= link_to "削除", group_path(@group.id), method: :delete %>
 <% end %>
 
-
-<%= link_to "削除", group_path(@group.id), method: :delete %>
 </div>
 <%= form_with model: @comment, url: group_comments_path(@group.id), method: :post, local: true do |f| %>
 <div class="field">
