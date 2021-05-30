@@ -7,6 +7,10 @@
 参加締め切り：<%= @group.deadline_date %><br>
 参加上限人数：<%= @group.max_num_of_people %>人<br>
 詳細：<%= @group.details %><br>
+参加者一覧<br>
+<% @group.users.each do |user| %>
+<%= user.nickname %><br>
+<% end %>
 
 <% if @group.user != current_user %>
   <% if @user_group_relation %>
