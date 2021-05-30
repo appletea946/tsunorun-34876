@@ -2,9 +2,10 @@
 <h2>this is groups#index</h2>
 <%= link_to "グループ作成", new_group_path %>
 <%= link_to "タグ一覧", tags_path %>
-<% @groups.each do |item| %><br>
+<% @groups.each do |group| %><br>
 <div style="border: 1px solid black;">
-タイトル：<%= link_to item.title, group_path(item.id) %><br>
+タイトル：<%= link_to group.title, group_path(group.id) %><br>
+作成者：<%= link_to group.user.nickname, user_path(group.user.id) %><br>
 </div>
 <% end %>
 <%= render "shared/footer" %>
