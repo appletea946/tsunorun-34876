@@ -29,9 +29,14 @@
 <%= f.submit "送信" %>
 </div>
 <% end %>
+
 <% @comments.each do |comment| %>
+<div style="border: 1px solid black">
+<%= comment.user.nickname %><br>
 <%= comment.content %>:<%= link_to "削除", group_comment_path(@group.id, comment.id), method: :delete %><br>
+</div>
 <% end %>
+
 <%= link_to "グループ編集", edit_group_path(@group.id) %>
 <%= link_to "トップへ", root_path %>
 <%= render "shared/footer" %>
